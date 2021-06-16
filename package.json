@@ -1,0 +1,51 @@
+{
+	"name": "NewReactComponentMenuItem",
+	"displayName": "NewReactComponentMenuItem",
+	"description": "Create new React components by right clicking on the file explorer.",
+	"publisher": "craftyasthefox",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.57.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:create-react-component.createReactComponent"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"menus": {
+			"explorer/context": [
+				{
+					"command": "create-react-component.createReactComponent",
+					"when": "explorerResourceIsFolder",
+					"group": "navigation@9",
+					"title": "New React Component"
+				}
+			]
+		},
+		"commands": [
+			{
+				"command": "create-react-component.createReactComponent",
+				"title": "New React Component"
+			}
+		]
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+		"@types/vscode": "^1.57.0",
+		"@types/glob": "^7.1.3",
+		"@types/mocha": "^8.2.2",
+		"@types/node": "14.x",
+		"eslint": "^7.27.0",
+		"glob": "^7.1.7",
+		"mocha": "^8.4.0",
+		"typescript": "^4.3.2",
+		"vscode-test": "^1.5.2"
+	}
+}
