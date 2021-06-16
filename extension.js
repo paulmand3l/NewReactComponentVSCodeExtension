@@ -37,7 +37,7 @@ async function createReactComponent(basePath) {
 
 	fs.createDirectory(componentPath);
 	fs.writeFile(indexFile, utf8(
-`export { default as ${componentName} } from './${componentName}.js'
+`export { default } from './${componentName}.js'
 `
 	));
 
