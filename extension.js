@@ -32,7 +32,7 @@ async function createReactComponent(basePath) {
     if (!componentName) return;
     const componentPath = joinPath(basePath, `/${componentName}`);
     const indexFile = joinPath(componentPath, `/index.ts`);
-    const mainFile = joinPath(componentPath, `/${componentName}.ts`);
+    const mainFile = joinPath(componentPath, `/${componentName}.tsx`);
     const cssFile = joinPath(componentPath, `/${componentName}.module.css`);
 
     fs.createDirectory(componentPath);
