@@ -37,25 +37,25 @@ async function createReactComponent(basePath) {
 
     fs.createDirectory(componentPath);
     fs.writeFile(indexFile, utf8(
-`export { default } from './${componentName}'
+`export { default } from './${componentName}';
 `
     ));
 
     fs.writeFile(mainFile, utf8(
-`import React from 'react'
-import styles from './${componentName}.module.css'
+`import React from 'react';
+import styles from './${componentName}.module.css';
 
 type ${componentName}Props = {};
 
 const ${componentName} = (props: ${componentName}Props) => {
   return (
     <div className={styles.${componentName}}>
-
+      ${componentName}
     </div>
-  )
-}
+  );
+};
 
-export default ${componentName}
+export default ${componentName};
 `
     ));
 
