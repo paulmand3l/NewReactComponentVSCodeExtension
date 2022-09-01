@@ -31,13 +31,13 @@ async function createReactComponent(basePath) {
 
     if (!componentName) return;
     const componentPath = joinPath(basePath, `/${componentName}`);
-    const indexFile = joinPath(componentPath, `/index.js`);
-    const mainFile = joinPath(componentPath, `/${componentName}.js`);
+    const indexFile = joinPath(componentPath, `/index.ts`);
+    const mainFile = joinPath(componentPath, `/${componentName}.ts`);
     const cssFile = joinPath(componentPath, `/${componentName}.module.css`);
 
     fs.createDirectory(componentPath);
     fs.writeFile(indexFile, utf8(
-`export { default } from './${componentName}.js'
+`export { default } from './${componentName}'
 `
     ));
 
@@ -45,14 +45,14 @@ async function createReactComponent(basePath) {
 `import React from 'react'
 import styles from './${componentName}.module.css'
 
-class ${componentName} extends React.PureComponent {
-  render() {
-    return (
-      <div className={styles.${componentName}}>
-        
-      </div>
-    )
-  }
+type ${componentName}Props = {};
+
+const ${componentName} = (props: ${componentName}Props) => {
+  return (
+    <div className={styles.${componentName}}>
+
+    </div>
+  )
 }
 
 export default ${componentName}
