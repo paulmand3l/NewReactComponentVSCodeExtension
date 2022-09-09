@@ -50,7 +50,7 @@ interface ${componentName}Props extends React.ComponentPropsWithoutRef<'div'> {
 };
 
 const ${componentName} = (props: ${componentName}Props) => {
-  const {children, ...rest) = props;
+  const {children, ...rest} = props;
   return (
     <div className={styles.${componentName}} {...rest}>
       {children}
