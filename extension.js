@@ -33,7 +33,7 @@ async function createReactComponent(basePath) {
     const componentPath = joinPath(basePath, `/${componentName}`);
     const indexFile = joinPath(componentPath, `/index.ts`);
     const mainFile = joinPath(componentPath, `/${componentName}.tsx`);
-    const cssFile = joinPath(componentPath, `/${componentName}.module.scss`);
+    const cssFile = joinPath(componentPath, `/${componentName}.module.styl`);
 
     fs.createDirectory(componentPath);
     fs.writeFile(indexFile, utf8(
@@ -43,17 +43,17 @@ async function createReactComponent(basePath) {
 
     fs.writeFile(mainFile, utf8(
 `import React from 'react';
-import styles from './${componentName}.module.scss';
+import styles from './${componentName}.module.styl';
 
 interface ${componentName}Props extends React.ComponentPropsWithoutRef<'div'> {
-  children?: React.ReactNode
+
 };
 
 const ${componentName} = (props: ${componentName}Props) => {
-  const {children, ...rest} = props;
+  const {...rest} = props;
   return (
     <div className={styles.${componentName}} {...rest}>
-      {children}
+
     </div>
   );
 };
@@ -63,9 +63,8 @@ export default ${componentName};
     ));
 
     fs.writeFile(cssFile, utf8(
-`.${componentName} {
-
-}
+`.${componentName}
+  display flex
 `
     ));
 
